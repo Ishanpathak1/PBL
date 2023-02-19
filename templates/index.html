@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Text Analysis Workshop</title>
+</head>
+<body>
+    <h1>Text Analysis</h1>
+    <h2>Input Text</h2>
+    <div class="row">
+        <div class="column left">
+            <form method="post">
+                <textarea name="text"></textarea>
+                <button type="submit">Analyze</button>
+            </form>
+        </div>
+        <div class="column right">
+            {% if tokenized_words %}
+            <h2>Tokenized Words</h2>
+            <ul>
+                {% for word in tokenized_words %}
+                <li>{{ word }}</li>
+                {% endfor %}
+            </ul>
+            {% endif %}
+            {% if bag_of_words %}
+            <h2>Bag of Words</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Word</th>
+                        <th>Count</th>
+                        <th>Term Frequency</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for word, count in bag_of_words.items() %}
+                    <tr>
+                        <td>{{ word }}</td>
+                        <td>{{ count }}</td>
+                        <td>{{ tf[word] }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            {% endif %}
+            {% if sentence_count %}
+            <h2>Sentence Count</h2>
+            <p>{{ sentence_count }}</p>
+            {% endif %}
+        </div>
+    </div>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
